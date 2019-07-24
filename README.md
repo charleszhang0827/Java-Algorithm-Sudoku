@@ -27,3 +27,5 @@ who do you think you are acutally are because I hate you or what?
 machine learning is like magic don't you think
 
 sometimes I wonder what is actually going on 
+
+actually i don't like to be udner a really noisy stuff you know
