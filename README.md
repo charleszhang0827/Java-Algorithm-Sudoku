@@ -4,6 +4,8 @@ This is what I mean dog
 
 hello it is me
 
+haha need to go brush my tooth and get reay for bed
+
 this is dominic jiang my god
 
 what do you think about this
