@@ -21,3 +21,5 @@ especially when the code doesn't work as well as expected
 I want to go to university of toronto because I always want to proof something that I haven't proff
 
 who do you think you are acutally are because I hate you or what?
+
+machine learning is like magic don't you think
