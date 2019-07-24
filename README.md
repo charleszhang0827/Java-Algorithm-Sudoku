@@ -9,3 +9,5 @@ this is dominic jiang my god
 what do you think about this
 
 haha this is awesome and I love it thanks dude
+
+to successfully solve this problem we need to collect algorithms
