@@ -15,3 +15,5 @@ Algorithm SudokuSolver made in Java without additional libraries by Dominic Jian
 3. Open terminal and type java (space) -jar (space) and drag the executable jar file in and press enter 
 
 ## Command Center
+
+hey hey I think my mother loves me so much
