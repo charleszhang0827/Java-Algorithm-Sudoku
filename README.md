@@ -11,3 +11,5 @@ what do you think about this
 haha this is awesome and I love it thanks dude
 
 to successfully solve this problem we need to collect algorithms
+
+first we need to solve this stupid ass thing
