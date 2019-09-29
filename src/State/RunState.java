@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import Entity.Block;
+import Entity.Entity;
 import Main.Display;
 import Runner.Maker.DFSMaker;
 import Runner.Solver.DFSSolver;
@@ -18,7 +19,7 @@ public class RunState extends State {
 	
 	private DFSSolver dFSSolver;
 	
-	private Block[][] blocks;
+	private Entity[][] entities;
 	
 	public RunState(Display display) {
 		super(display);
@@ -27,13 +28,7 @@ public class RunState extends State {
 	}
 	
 	private void createObject() {
-		blocks=new Block[display.getWidth()/display.getResolution()][display.getHeight()/display.getResolution()];
-		
-		for(int x=0;x<blocks.length;x++) {
-			for(int y=0;y<blocks[x].length;y++) {
-				blocks[x][y]=new Block(display,x*display.getResolution(),y*display.getResolution(),0);
-			}
-		}
+		entities=new Entity[display.getWidth()/display.getResolution()][display.getHeight()/display.getResolution()];
 	}
 	
 	public void tick() {
@@ -41,9 +36,11 @@ public class RunState extends State {
 		
 		DFSSolverTick();
 		
-		for(int x=0;x<blocks.length;x++) {
-			for(int y=0;y<blocks[x].length;y++) {
-				blocks[x][y].tick();
+		for(int x=0;x<entities.length;x++) {
+			for(int y=0;y<entities[x].length;y++) {
+				if(entities[x][y] instanceof Block) {
+					((Block)(entities[x][y])).tick();
+				}
 			}
 		}
 	}
@@ -65,9 +62,11 @@ public class RunState extends State {
 	}
 	
 	public void render(Graphics2D g) {
-		for(int x=0;x<blocks.length;x++) {
-			for(int y=0;y<blocks[x].length;y++) {
-				blocks[x][y].render(g);
+		for(int x=0;x<entities.length;x++) {
+			for(int y=0;y<entities[x].length;y++) {
+				if(entities[x][y] instanceof Block) {
+					((Block)(entities[x][y])).render(g);
+				}
 			}
 		}
 		
@@ -96,14 +95,14 @@ public class RunState extends State {
 		return DFSSolving;
 	}
 	
-	public Block[][] getBlocks() {
-		return blocks;
+	public Entity[][] getEntities() {
+		return entities;
 	}
 	
 	public void reset() {
-		for(int x=0;x<blocks.length;x++) {
-			for(int y=0;y<blocks[x].length;y++) {
-				blocks[x][y].setValue(0);
+		for(int x=0;x<entities.length;x++) {
+			for(int y=0;y<entities[x].length;y++) {
+				entities[x][y]=null;
 			}
 		}
 		
