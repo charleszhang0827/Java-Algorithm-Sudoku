@@ -3,6 +3,7 @@ package Runner.Maker;
 import java.util.ArrayList;
 
 import Entity.Block;
+import Entity.Entity;
 import Main.Display;
 import Runner.Runner;
 
@@ -24,12 +25,6 @@ public class DFSMaker extends Runner {
 	
 	private void createObject() {
 		map=new int[display.getWidth()/display.getResolution()][display.getHeight()/display.getResolution()];
-		
-		for(int x=0;x<map.length;x++) {
-			for(int y=0;y<map.length;y++) {
-				map[x][y]=0;
-			}
-		}
 	}
 	
 	public synchronized void start() {
@@ -42,6 +37,9 @@ public class DFSMaker extends Runner {
 	}
 	
 	public void run() {
+		
+		Entity[][] entities=display.getRunState().getEntities();
+		
 		int x=0; int y=0;
 		
 		while(x<=map.length-1 || y<=map.length-1) {
@@ -77,11 +75,9 @@ public class DFSMaker extends Runner {
 			}
 		}
 		
-		Block[][] blocks=display.getRunState().getBlocks();
-		
-		for(int w=0;w<blocks.length;w++) {
-			for(int q=0;q<blocks[w].length;q++) {
-				blocks[w][q].setValue(map[q][w]);
+		for(x=0;x<entities.length;x++) {
+			for(y=0;y<entities[x].length;y++) {
+				entities[x][y]=new Block(display,x*display.getResolution(),y*display.getResolution(),map[x][y]);
 			}
 		}
 		
