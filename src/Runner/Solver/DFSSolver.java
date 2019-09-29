@@ -3,6 +3,8 @@ package Runner.Solver;
 import java.util.ArrayList;
 import java.util.Stack;
 
+import Entity.Block;
+import Entity.Entity;
 import Main.Display;
 import Runner.Runner;
 
@@ -32,12 +34,16 @@ public class DFSSolver extends Runner {
 	}
 	
 	public void run() {
-		map=new int[display.getRunState().getBlocks().length][display.getRunState().getBlocks().length];
 		
+		Entity[][] entities=display.getRunState().getEntities();
 		
-		for(int x=0;x<map.length;x++) {
-			for(int y=0;y<map[x].length;y++) {
-				map[x][y]=display.getRunState().getBlocks()[y][x].getValue();
+		map=new int[entities.length][entities.length];
+		
+		for(int x=0;x<entities.length;x++) {
+			for(int y=0;y<entities[x].length;y++) {
+				if(entities[x][y] instanceof Block) {
+					map[x][y]=((Block)(entities[x][y])).getValue();
+				}
 			}
 		}
 		
@@ -89,12 +95,11 @@ public class DFSSolver extends Runner {
 					y++;
 				}
 			}
-			
 		}
 		
 		for(int q=0;q<map.length;q++) {
 			for(int w=0;w<map[q].length;w++) {
-				display.getRunState().getBlocks()[q][w].setValue(map[w][q]);
+				entities[q][w]=new Block(display,q*display.getResolution(),w*display.getResolution(),map[q][w]);
 			}
 		}
 		stop();
