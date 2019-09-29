@@ -26,7 +26,7 @@ public class Block extends Entity implements Tickable,Renderable {
 				
 				if(x>this.x && x<this.x+display.getResolution()) {
 					if(y>this.y && y<this.y+display.getResolution()) {
-						value=0;
+						display.getRunState().getEntities()[x/display.getResolution()][y/display.getResolution()]=null;
 					}
 				}
 			}
@@ -34,16 +34,14 @@ public class Block extends Entity implements Tickable,Renderable {
 	}
 	
 	public void render(Graphics2D g) {
-		if(value!=0) {
-			g.setColor(Color.DARK_GRAY);
-			g.fillRect(x,y,display.getResolution(),display.getResolution());
+		g.setColor(Color.DARK_GRAY);
+		g.fillRect(x,y,display.getResolution(),display.getResolution());
 			
-			Font font=new Font("TimesRoman",Font.BOLD,30);
+		Font font=new Font("TimesRoman",Font.BOLD,30);
 			
-			Rectangle rectangle=new Rectangle(x,y,display.getResolution(),display.getResolution());
+		Rectangle rectangle=new Rectangle(x,y,display.getResolution(),display.getResolution());
 			
-			this.drawCenterText(g,font,String.valueOf(value),rectangle);
-		}
+		this.drawCenterText(g,font,String.valueOf(value),rectangle);
 	}
 	
 	public void setValue(int value) {
